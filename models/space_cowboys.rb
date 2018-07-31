@@ -57,12 +57,12 @@ class SpaceCowboy
     sql = "SELECT * FROM space_cowboys WHERE name = $1"
     values = [name]
     db.prepare("find_by_name", sql)
-    cowboys = db.exec_prepared("find_by_name", values)
+    cowboy_data = db.exec_prepared("find_by_name", values)
     db.close()
-    if cowboys.count() == 0
+    if cowboy_data.count() == 0
       return nil
     else
-      return SpaceCowboy.new(cowboys[0])
+      return SpaceCowboy.new(cowboy_data[0])
     end
   end
 
@@ -71,12 +71,12 @@ class SpaceCowboy
     sql = "SELECT * FROM space_cowboys WHERE id = $1"
     values = [id]
     db.prepare("find_by_id", sql)
-    cowboys = db.exec_prepared("find_by_id", values)
+    cowboy_data = db.exec_prepared("find_by_id", values)
     db.close()
-    if cowboys.count() == 0
+    if cowboy_data.count() == 0
       return nil
     else
-      return SpaceCowboy.new(cowboys[0])
+      return SpaceCowboy.new(cowboy_data[0])
     end
   end
 end
